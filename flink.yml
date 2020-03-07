@@ -1,0 +1,32 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: flink-deployment-master
+  labels:
+    app: flink-app-master
+spec:
+  selector:
+    matchLabels:
+      app: flink-app-master
+      tier: flink-deployment-master
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flink-app-master
+        tier: flink-deployment-master
+    spec:
+      containers:
+      - name: flink-image
+        image: sameerbhat/flink-fresh
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+          - mountPath: /tmp
+            name: tmp
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+      volumes:
+        - emptyDir: {}
+          name: tmp
