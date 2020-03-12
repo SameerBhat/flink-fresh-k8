@@ -2,8 +2,12 @@ docker build --build-arg flink_dist="flink-dist" --build-arg job_artifacts="arti
 
 docker run -p 6123:8081 flink-fresh
 
-kubectl create -f flink.yml; kubectl create -f flink-service.yml;
+docker tag flink-fresh sameerbhat/flink-fresh;docker push sameerbhat/flink-fresh
+
+kubectl create -f flink.yml; kubectl create -f  flink-task-manager.yml; kubectl create -f flink-service.yml;
 
  kubectl logs -f flink-deployment-master-6fbdb57dfc-rckkm
 
  minikube service flink-deployment-master --url
+
+ job-manager.sh

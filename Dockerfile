@@ -32,6 +32,8 @@ RUN \
 ADD $flink_dist $hadoop_jar $FLINK_INSTALL_PATH/
 ADD $job_artifacts/* $FLINK_JOB_ARTIFACTS_DIR/
 
+COPY artifacts/WordCount.jar /opt/artifacts/WordCount.jar
+
 RUN set -x && \
   ln -s $FLINK_INSTALL_PATH/flink-[0-9]* $FLINK_HOME && \
   ln -s $FLINK_JOB_ARTIFACTS_DIR $FLINK_USR_LIB_DIR && \
@@ -46,5 +48,6 @@ COPY docker-entrypoint.sh /
 
 USER flink
 EXPOSE 8081 6123
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["job-cluster"]
+
+# ENTRYPOINT ["/docker-entrypoint.sh"]
+# CMD ["job-cluster"]

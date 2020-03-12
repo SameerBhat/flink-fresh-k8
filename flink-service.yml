@@ -8,7 +8,12 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8081
+  - name: dashboard
+    port: 8081
+  # targetPort: 8081
+  - name: process
+    port: 6123
+  # targetPort: 6123
   selector:
     app: flink-app-master
     tier: flink-deployment-master

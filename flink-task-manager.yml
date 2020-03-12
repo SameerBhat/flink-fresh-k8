@@ -1,7 +1,7 @@
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: flink-deployment-master
+  name: flink-deployment-master-task-manager
   labels:
     app: flink-app-master
 spec:
@@ -19,14 +19,9 @@ spec:
       containers:
       - name: flink-image
         image: sameerbhat/flink-fresh
-        command: ["/bin/sh","-c"]
-        args: ["/opt/flink/bin/jobmanager.sh start-foreground; /opt/flink/bin/flink /opt/artifacts/WordCount.jar"]
-        # command: ["/opt/flink/bin/jobmanager.sh", "start-foreground"]
+        command: ["/opt/flink/bin/taskmanager.sh", "start-foreground"]
         ports:
-        - containerPort: 8081
-          name: dashboard
         - containerPort: 6123
-          name: process
         volumeMounts:
           - mountPath: /tmp
             name: tmp
