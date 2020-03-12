@@ -21,7 +21,14 @@ spec:
         image: sameerbhat/flink-fresh
         command: ["/opt/flink/bin/taskmanager.sh", "start-foreground"]
         ports:
+        - containerPort: 8081
+          name: dashboard
         - containerPort: 6123
+          name: process
+        - containerPort: 6124
+          name: blob
+        - containerPort: 6122
+          name: rpc
         volumeMounts:
           - mountPath: /tmp
             name: tmp

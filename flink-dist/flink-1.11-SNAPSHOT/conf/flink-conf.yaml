@@ -4,11 +4,13 @@ jobmanager.rpc.address: flink-deployment-master
 
 jobmanager.rpc.port: 6123
 
+taskmanager.rpc.port: 6122
+
 # The heap size for the JobManager JVM
 
 jobmanager.heap.size: 1024m
 
-
+blob.server.port: 6124
 # The total process memory size for the TaskManager.
 #
 # Note this accounts for all memory usage within the TaskManager process, including JVM metaspace and other overhead.

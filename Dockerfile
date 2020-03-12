@@ -47,7 +47,7 @@ RUN set -x && \
 COPY docker-entrypoint.sh /
 
 USER flink
-EXPOSE 8081 6123
+EXPOSE 8081 6122 6123 6124
 
 # ENTRYPOINT ["/docker-entrypoint.sh"]
 # CMD ["job-cluster"]

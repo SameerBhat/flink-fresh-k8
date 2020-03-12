@@ -27,6 +27,8 @@ spec:
           name: dashboard
         - containerPort: 6123
           name: process
+        - containerPort: 6124
+          name: blob
         volumeMounts:
           - mountPath: /tmp
             name: tmp

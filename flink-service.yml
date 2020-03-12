@@ -13,6 +13,8 @@ spec:
   # targetPort: 8081
   - name: process
     port: 6123
+  - name: blob
+    port: 6124
   # targetPort: 6123
   selector:
     app: flink-app-master
