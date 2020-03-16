@@ -1,0 +1,24 @@
+127.0.0.1       mail.rozewebdesign.com localhost
+
+mail.rozewebdesign.com
+
+
+bill@rozewebdesign.com
+
+
+sudo certbot certonly --webroot --agree-tos --email bill@rozewebdesign.com -d mail.rozewebdesign.com -w /var/www/html/
+
+
+ssl_certificate /etc/letsencrypt/live/mail.rozewebdesign.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/mail.rozewebdesign.com/privkey.pem;
+
+
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.rozewebdesign.com/privkey.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.rozewebdesign.com/cert.pem
+smtpd_tls_CAfile = /etc/letsencrypt/live/mail.rozewebdesign.com/chain.pem
+
+
+ssl_cert = </etc/letsencrypt/live/mail.rozewebdesign.com/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.rozewebdesign.com/privkey.pem
+
+Server Error: STATUS: Internal error occurred. Refer to server log for more information. [2020-03-15 13:0
